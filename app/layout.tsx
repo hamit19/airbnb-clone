@@ -1,3 +1,4 @@
+import Modal from "./components/modals/Modal";
 import Navbar from "./components/navbar/Navbar";
 import "./globals.css";
 
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={font.className}>
+        <Modal actionLabel='Submit' title='Hello Next' isOpen />
         <Navbar />
         {children}
       </body>
