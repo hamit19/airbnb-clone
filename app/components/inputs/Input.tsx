@@ -43,7 +43,7 @@ const Input: React.FC<InputProps> = ({
             peer
             w-full
             rounded-lg
-            p-4
+            p-3
             outline-none
             border-2
             transition
@@ -57,7 +57,7 @@ const Input: React.FC<InputProps> = ({
       <label
         className={`
             absolute
-            top-4
+            top-3
             font-semibold 
             -translate-y-3
             z-10

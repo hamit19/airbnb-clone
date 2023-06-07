@@ -10,6 +10,7 @@ import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../inputs/Input";
 import { toast } from "react-hot-toast";
+import Button from "../button";
 
 const RegisterModal = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -42,7 +43,7 @@ const RegisterModal = () => {
     setIsLoading(false);
   };
 
-  const bodyContent = () => (
+  const bodyContent = (
     <form className='flex flex-col gap-4'>
       <Heading title='Welcome to Airbnb' subtitle='Create an account!' />
       <Input
@@ -75,6 +76,34 @@ const RegisterModal = () => {
     </form>
   );
 
+  const footerContent = (
+    <div className='flex flex-col gap-2 mt-3'>
+      <Button
+        outline
+        icon={FcGoogle}
+        label='Continue with Google'
+        onClick={() => {}}
+      />
+      <Button
+        outline
+        icon={AiFillGithub}
+        label='Continue with Github'
+        onClick={() => {}}
+      />
+      <div className='pt-2 text-center'>
+        <span>
+          Already have an account?{" "}
+          <span
+            onClick={registerModal.onClose}
+            className='cursor-pointer text-neutral-800 hover:underline'
+          >
+            Log in
+          </span>
+        </span>
+      </div>
+    </div>
+  );
+
   return (
     <Modal
       disabled={isLoading}
@@ -83,7 +112,8 @@ const RegisterModal = () => {
       actionLabel='Continue'
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
-      body={bodyContent()}
+      body={bodyContent}
+      footer={footerContent}
     />
   );
 };
