@@ -32,7 +32,7 @@ const RegisterModal = () => {
     setIsLoading(true);
 
     try {
-      await axios.post("api/register", data);
+      await axios.post("/api/register", data);
 
       registerModal.onClose();
     } catch (err) {
