@@ -2,6 +2,7 @@
 
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { BiDollar } from "react-icons/bi";
+import { useState } from "react";
 
 interface InputProps {
   id: string;
@@ -24,6 +25,8 @@ const Input: React.FC<InputProps> = ({
   errors,
   formatPrice,
 }) => {
+  const [isFilled, setIsFilled] = useState(false);
+
   return (
     <div className='relative w-full'>
       {formatPrice && (
@@ -39,11 +42,12 @@ const Input: React.FC<InputProps> = ({
         disabled={disabled}
         {...register(id, { required })}
         placeholder=' '
+        onChange={(e) => setIsFilled(e.target.value.length > 0 ? true : false)}
         className={`
             peer
             w-full
             rounded-lg
-            p-3
+            p-4
             outline-none
             border-2
             transition
@@ -70,8 +74,10 @@ const Input: React.FC<InputProps> = ({
             peer-placeholder-shown:scale-100
             peer-placeholder-shown:translate-y-0
             peer-focus:scale-75
-            peer-focus:-translate-y-4
+            peer-focus:-translate-y-3
             ${errors[id] ? "text-rose-500" : "text-zinc-400"}
+            ${isFilled && "scale-75"}
+            ${isFilled && "-translate-y-3"}
       `}
       >
         {label}
