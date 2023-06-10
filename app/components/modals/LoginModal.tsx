@@ -34,18 +34,21 @@ const LoginModal = () => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);
 
-    signIn("credentials", { ...data, redirect: false }).then((callback) => {
-      setIsLoading(false);
-      if (callback?.ok) {
-        toast.success("Logged in");
-        router.refresh();
-        loginModal.onClose();
-      }
+    await signIn("credentials", { ...data, redirect: false }).then(
+      (callback) => {
+        setIsLoading(false);
+        console.log(callback);
+        if (callback?.ok) {
+          toast.success("Logged in");
+          router.refresh();
+          loginModal.onClose();
+        }
 
-      if (callback?.error) {
-        toast.error(callback.error);
+        if (callback?.error) {
+          toast.error(callback.error);
+        }
       }
-    });
+    );
 
     setIsLoading(false);
   };
