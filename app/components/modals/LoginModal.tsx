@@ -45,12 +45,11 @@ const LoginModal = () => {
         }
 
         if (callback?.error) {
+          setIsLoading(false);
           toast.error(callback.error);
         }
       }
     );
-
-    setIsLoading(false);
   };
 
   const bodyContent = (
