@@ -11,6 +11,7 @@ import Heading from "../Heading";
 import Input from "../inputs/Input";
 import { toast } from "react-hot-toast";
 import Button from "../button";
+import { signIn } from "next-auth/react";
 
 const RegisterModal = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -88,7 +89,7 @@ const RegisterModal = () => {
         outline
         icon={AiFillGithub}
         label='Continue with Github'
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
       <div className='pt-2 text-center'>
         <span>

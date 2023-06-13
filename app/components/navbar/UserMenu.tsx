@@ -33,7 +33,7 @@ const UserMenu: React.FC<NavbarProps> = ({ currentUser }) => {
         >
           <AiOutlineMenu />
           <div className='hidden md:block'>
-            <Avatar />
+            <Avatar src={currentUser?.image} />
           </div>
         </div>
       </div>
