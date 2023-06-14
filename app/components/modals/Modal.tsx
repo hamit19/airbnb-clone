@@ -64,12 +64,12 @@ const Modal: React.FC<ModalProps> = ({
         onClick={() => handleClose()}
         className='fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none bg-neutral-700/70'
       >
-        <div className='relative w-full h-full mx-auto my-6 md:w-4/6 lg:w-3/6 xl:w-2/5 lg:h-auto md:h-auto'>
+        <div className='relative w-full h-full mx-auto my-6 md:w-4/6 lg:w-3/6 xl:w-2/6 lg:h-auto md:h-auto'>
           {/* CONTENT */}
           <div
             onClick={(e) => e.stopPropagation()}
             className={`
-            translate duration-300 h-full
+             translate duration-300 h-full
              ${showModal ? "translate-y-0" : "translate-y-full"} 
              ${showModal ? "opacity-100" : "opacity-0"} 
             `}

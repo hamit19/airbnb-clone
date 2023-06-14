@@ -81,12 +81,6 @@ const RegisterModal = () => {
     <div className='flex flex-col gap-2 mt-3'>
       <Button
         outline
-        icon={FcGoogle}
-        label='Continue with Google'
-        onClick={() => {}}
-      />
-      <Button
-        outline
         icon={AiFillGithub}
         label='Continue with Github'
         onClick={() => signIn("github")}
