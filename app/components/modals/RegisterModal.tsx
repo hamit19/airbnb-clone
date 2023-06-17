@@ -49,7 +49,7 @@ const RegisterModal = () => {
   const toggle = useCallback(() => {
     registerModal.onClose();
     loginModal.onOpen();
-  }, []);
+  }, [registerModal, loginModal]);
 
   const bodyContent = (
     <form className='flex flex-col gap-4'>
