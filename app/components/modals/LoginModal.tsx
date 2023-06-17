@@ -1,7 +1,7 @@
 "use client";
 
 import { AiFillGithub } from "react-icons/ai";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import Modal from "./Modal";
@@ -36,7 +36,6 @@ const LoginModal = () => {
     await signIn("credentials", { ...data, redirect: false }).then(
       (callback) => {
         setIsLoading(false);
-        console.log(callback);
         if (callback?.ok) {
           toast.success("Logged in");
           router.refresh();
@@ -50,6 +49,11 @@ const LoginModal = () => {
       }
     );
   };
+
+  const toggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <form className='flex flex-col gap-4'>
@@ -86,12 +90,12 @@ const LoginModal = () => {
       />
       <div className='pt-2 text-center'>
         <span>
-          Already have an account?{" "}
+          First time your using Airbnb?{" "}
           <span
-            onClick={registerModal.onClose}
+            onClick={toggle}
             className='cursor-pointer text-neutral-800 hover:underline'
           >
-            Log in
+            Create an account
           </span>
         </span>
       </div>
