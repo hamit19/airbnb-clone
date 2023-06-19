@@ -25,3 +25,10 @@ body,
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: #6b7280;
 }
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top {
+  z-index: 0 !important;
+}
