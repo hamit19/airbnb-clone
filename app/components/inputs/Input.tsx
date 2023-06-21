@@ -13,6 +13,7 @@ interface InputProps {
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors;
   formatPrice?: boolean;
+  textarea?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -24,6 +25,7 @@ const Input: React.FC<InputProps> = ({
   required,
   errors,
   formatPrice,
+  textarea,
 }) => {
   const [isFilled, setIsFilled] = useState(false);
 
@@ -32,36 +34,65 @@ const Input: React.FC<InputProps> = ({
       {formatPrice && (
         <BiDollar
           size={24}
-          className='absolute text-neutral-700 top-2 left-5'
+          className='absolute left-3 text-neutral-600 top-5'
         />
       )}
 
-      <input
-        type={type}
-        id={id}
-        disabled={disabled}
-        {...register(id, { required })}
-        placeholder=' '
-        onChange={(e) => setIsFilled(e.target.value.length > 0 ? true : false)}
-        className={`
+      {!textarea ? (
+        <input
+          type={type}
+          id={id}
+          disabled={disabled}
+          {...register(id, { required })}
+          placeholder=' '
+          onChange={(e) => setIsFilled(e.target.value.length > 0 || false)}
+          className={`
             peer
             w-full
             rounded-lg
-            p-4
+            p-5
             outline-none
             border-2
             transition
             duration-150
             disabled:opacity-70
             disabled:cursor-not-allowed
+            text-neutral-800
+            ${errors[id] ? "border-rose-500" : `border-neutral-300`}
+            ${errors[id] ? "focus:border-rose-500" : `focus:border-neutral-700`}
+            ${formatPrice && "pl-10"}
+        `}
+        />
+      ) : (
+        <textarea
+          id={id}
+          disabled={disabled}
+          {...register(id, { required })}
+          placeholder=' '
+          onChange={(e) =>
+            setIsFilled(e.target.value.length > 0 ? true : false)
+          }
+          className={`
+            peer
+            w-full
+            rounded-lg
+            p-5
+            outline-none
+            border-2
+            transition
+            duration-150
+            disabled:opacity-70
+            disabled:cursor-not-allowed
+            text-neutral-700
             ${errors[id] ? "border-rose-500" : `border-neutral-300`}
             ${errors[id] ? "focus:border-rose-500" : `focus:border-neutral-700`}
         `}
-      />
+        />
+      )}
       <label
         className={`
             absolute
-            top-3
+            top-5
             font-semibold 
             -translate-y-3
             z-10
@@ -74,10 +105,10 @@ const Input: React.FC<InputProps> = ({
             peer-placeholder-shown:scale-100
             peer-placeholder-shown:translate-y-0
             peer-focus:scale-75
-            peer-focus:-translate-y-3
+            peer-focus:-translate-y-4
             ${errors[id] ? "text-rose-500" : "text-zinc-400"}
             ${isFilled && "scale-75"}
-            ${isFilled && "-translate-y-3"}
+            ${isFilled && "-translate-y-4"}
       `}
       >
         {label}
