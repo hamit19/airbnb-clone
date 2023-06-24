@@ -10,17 +10,25 @@ body,
 
 .custom-scrollbar::-webkit-scrollbar {
   height: 7px;
-  cursor: pointer;
+  width: 5px;
   background-color: #f4f4f5;
   border-radius: 50px;
+  cursor: pointer;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #a1a1aa;
   border-radius: 50px;
-
+  cursor: pointer;
   transition: all 3s ease;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: #6b7280;
+}
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top {
+  z-index: 0 !important;
 }
