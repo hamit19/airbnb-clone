@@ -39,6 +39,27 @@ const RentModal = () => {
     setStep((value) => value + 1);
   };
 
+  const onSubmit: SubmitHandler<FieldValues> = async (value) => {
+    if (step !== STEPS.PRICE) return onNext();
+
+    setIsLoading(true);
+
+    try {
+      const { data } = await axios.post("/api/listing", value);
+
+      console.log(data, "this is the data that was returned!");
+      // router.refresh()
+      toast.success("Listing created!");
+      setStep(STEPS.CATEGORIES);
+      reset();
+      rentModal.onClose();
+    } catch (err) {
+      toast.error("Something went wong, please try agin!");
+    }
+
+    setIsLoading(false);
+  };
+
   const actionLabel = useMemo(() => {
     if (step === STEPS.PRICE) return "Create";
     return "Next";
@@ -233,7 +254,7 @@ const RentModal = () => {
     <Modal
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
-      onSubmit={() => onNext}
+      onSubmit={handleSubmit(onSubmit)}
       title='Airbnb is your home!'
       actionLabel={actionLabel}
       secondaryAction={step === STEPS.CATEGORIES ? undefined : onBack}

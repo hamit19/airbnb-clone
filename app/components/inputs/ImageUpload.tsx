@@ -16,6 +16,10 @@ interface ImageUploadProps {
 const ImageUpload: React.FC<ImageUploadProps> = ({ onChange, value }) => {
   const handleUpload = useCallback(
     (result: any) => {
+      // this is a test to know that listing is created or not!
+      // onChange(
+      //   "https://www.familyhomeplans.com/blog/wp-content/uploads/2021/07/House-Plan-With-Curb-Appeal-42698-familyhomeplans.com_.jpg"
+      // );
       onChange(result.info.secure_url);
     },
     [onChange]
