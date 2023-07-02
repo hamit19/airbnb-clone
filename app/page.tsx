@@ -8,17 +8,8 @@ import getCurrentUser from "./actions/getCurrentUser";
 
 const isEmpty = false;
 export default async function Home() {
-  // const listings = await getListings();
+  const listings = await getListings();
   const currentUser = await getCurrentUser();
-  const listings: any = [
-    {
-      id: "kkdjww882!@81kk",
-      title: "Modern Villa in France",
-      description:
-        "this is a Modern and lux villa that can be hostage of 6 people ",
-      imageSrc: testingImage,
-    },
-  ];
 
   if (isEmpty) {
     return <EmptyState showReset={true} />;
