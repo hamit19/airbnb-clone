@@ -12,7 +12,7 @@ export default async function Home() {
   const currentUser = await getCurrentUser();
 
   if (isEmpty) {
-    return <EmptyState showReset={true} />;
+    return <EmptyState buttonLabel={"Remove all filters"} showReset={true} />;
   }
 
   return (
