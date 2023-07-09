@@ -666,6 +666,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-date-range@npm:^1.4.4":
+  version: 1.4.4
+  resolution: "@types/react-date-range@npm:1.4.4"
+  dependencies:
+    "@types/react": "*"
+    date-fns: ^2.16.1
+  checksum: 44c6bc43348a03cded5715e7abb344120a86e92f3d29a7f71b3089a270d5d685a52bc44856332e66decca121a9ac62978dfb1b485a130052fb1e608303ef4199
+  languageName: node
+  linkType: hard
+
 "@types/react-dom@npm:18.2.4":
   version: 18.2.4
   resolution: "@types/react-dom@npm:18.2.4"
@@ -829,6 +839,7 @@ __metadata:
     "@types/leaflet": ^1.9.3
     "@types/node": 20.2.5
     "@types/react": 18.2.8
+    "@types/react-date-range": ^1.4.4
     "@types/react-dom": 18.2.4
     autoprefixer: 10.4.14
     axios: ^1.4.0
@@ -844,6 +855,7 @@ __metadata:
     prisma: ^4.15.0
     query-string: ^8.1.0
     react: 18.2.0
+    react-date-range: ^1.4.0
     react-dom: 18.2.0
     react-hook-form: ^7.44.3
     react-hot-toast: ^2.4.1
@@ -1309,6 +1321,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"classnames@npm:^2.2.6":
+  version: 2.3.2
+  resolution: "classnames@npm:2.3.2"
+  checksum: 2c62199789618d95545c872787137262e741f9db13328e216b093eea91c85ef2bfb152c1f9e63027204e2559a006a92eb74147d46c800a9f96297ae1d9f96f4e
+  languageName: node
+  linkType: hard
+
 "clean-stack@npm:^2.0.0":
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
@@ -1455,7 +1474,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.30.0":
+"date-fns@npm:^2.16.1, date-fns@npm:^2.30.0":
   version: 2.30.0
   resolution: "date-fns@npm:2.30.0"
   dependencies:
@@ -4133,7 +4152,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.0, prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
+"prop-types@npm:15, prop-types@npm:^15.6.0, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -4173,6 +4192,21 @@ __metadata:
   version: 1.2.3
   resolution: "queue-microtask@npm:1.2.3"
   checksum: b676f8c040cdc5b12723ad2f91414d267605b26419d5c821ff03befa817ddd10e238d22b25d604920340fd73efd8ba795465a0377c4adf45a4a41e4234e42dc4
+  languageName: node
+  linkType: hard
+
+"react-date-range@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "react-date-range@npm:1.4.0"
+  dependencies:
+    classnames: ^2.2.6
+    prop-types: ^15.7.2
+    react-list: ^0.8.13
+    shallow-equal: ^1.2.1
+  peerDependencies:
+    date-fns: 2.0.0-alpha.7 || >=2.0.0
+    react: ^0.14 || ^15.0.0-rc || >=15.0
+  checksum: ea26bcc268aef2045fc89c1f15148d2578a83712aedcced401da91e8bb613d929264ee71e6c5b4783147c07a175b14a0264c3cea01749a8414f7d9eb09a43b5a
   languageName: node
   linkType: hard
 
@@ -4235,6 +4269,17 @@ __metadata:
     react: ^18.0.0
     react-dom: ^18.0.0
   checksum: 79222c2ba0c62facaa3dfee18f7a692f917a4fb744ba8d22269a77f9779fc9634962230eb51265ff2563a1a5e3287d2ec16640ee7f5de459458027e05cd756ba
+  languageName: node
+  linkType: hard
+
+"react-list@npm:^0.8.13":
+  version: 0.8.17
+  resolution: "react-list@npm:0.8.17"
+  dependencies:
+    prop-types: 15
+  peerDependencies:
+    react: 0.14 || 15 - 18
+  checksum: ab73693e36e33046e0fbf4aa8046433bc5dd146f06ec9ee273c78149f8f9c093d85f65705c42779d927fc8b5b8826eb3ddb21171830d34197c4f690313eb89d7
   languageName: node
   linkType: hard
 
@@ -4496,6 +4541,13 @@ __metadata:
   version: 2.0.0
   resolution: "set-blocking@npm:2.0.0"
   checksum: 6e65a05f7cf7ebdf8b7c75b101e18c0b7e3dff4940d480efed8aad3a36a4005140b660fa1d804cb8bce911cac290441dc728084a30504d3516ac2ff7ad607b02
+  languageName: node
+  linkType: hard
+
+"shallow-equal@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "shallow-equal@npm:1.2.1"
+  checksum: 4f1645cc516e7754c4438db687e1da439a5f29a7dba2ba90c5f88e5708aeb17bc4355ba45cad805b0e95dc898e37d8bf6d77d854919c7512f89939986cff8cd1
   languageName: node
   linkType: hard
 
