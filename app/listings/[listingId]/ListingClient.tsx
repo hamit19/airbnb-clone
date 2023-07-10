@@ -13,6 +13,7 @@ import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import ListingReservation from "@/app/components/listings/ListingReservation";
+import { Range } from "react-date-range";
 
 const initialDateRage = {
   startDate: new Date(),
@@ -57,7 +58,7 @@ const ListingClient: React.FC<ListingClientParams> = ({
 
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);
-  const [dateRange, setDateRange] = useState(initialDateRage);
+  const [dateRange, setDateRange] = useState<Range>(initialDateRage);
 
   const onCreateReservation = useCallback(async () => {
     if (!currentUser) return loginModal.onOpen();
@@ -87,8 +88,8 @@ const ListingClient: React.FC<ListingClientParams> = ({
   useEffect(() => {
     if (dateRange.startDate && dateRange.endDate) {
       const dayCount = differenceInCalendarDays(
-        dateRange.startDate,
-        dateRange.endDate
+        dateRange.endDate,
+        dateRange.startDate
       );
 
       if (dayCount && listing.price) {
@@ -122,7 +123,7 @@ const ListingClient: React.FC<ListingClientParams> = ({
             locationValue={listing.locationValue}
           />
 
-          <div className='first-order mb-10 md:col-span-3 md:order-last'>
+          <div className='mb-10 first-order md:col-span-3 md:order-last'>
             <ListingReservation
               price={listing.price}
               totalPrice={totalPrice}
