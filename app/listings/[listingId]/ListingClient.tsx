@@ -2,8 +2,7 @@
 import React, { useCallback, useMemo, useState, useEffect } from "react";
 import { categories } from "@/app/components/navbar/Categories";
 
-import { SafeListing, SafeUser } from "@/app/types";
-import { Listing, Reservation } from "@prisma/client";
+import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import Container from "@/app/components/container";
 import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
@@ -22,7 +21,7 @@ const initialDateRage = {
 };
 
 interface ListingClientParams {
-  reservations?: Reservation[];
+  reservations?: SafeReservation[];
   currentUser?: SafeUser | null;
   listing: SafeListing & {
     user: SafeUser;
@@ -60,31 +59,6 @@ const ListingClient: React.FC<ListingClientParams> = ({
   const [totalPrice, setTotalPrice] = useState(listing.price);
   const [dateRange, setDateRange] = useState<Range>(initialDateRage);
 
-  const onCreateReservation = useCallback(async () => {
-    if (!currentUser) return loginModal.onOpen();
-
-    setIsLoading(true);
-
-    try {
-      await axios.post("/api/reservations", {
-        totalPrice,
-        startDate: dateRange.startDate,
-        endDate: dateRange.endDate,
-        listingId: listing?.id,
-      });
-
-      toast.success("Listing reserved!");
-      setDateRange(initialDateRage);
-
-      // todo => redirect trips!
-
-      router.refresh();
-    } catch (err) {
-      toast.error("Something went wrong!");
-    }
-    setIsLoading(false);
-  }, [currentUser, totalPrice, dateRange, loginModal, router, listing.id]);
-
   useEffect(() => {
     if (dateRange.startDate && dateRange.endDate) {
       const dayCount = differenceInCalendarDays(
@@ -99,6 +73,33 @@ const ListingClient: React.FC<ListingClientParams> = ({
       }
     }
   }, [dateRange, listing.price]);
+
+  const onCreateReservation = useCallback(async () => {
+    if (!currentUser) return loginModal.onOpen();
+
+    setIsLoading(true);
+
+    console.log(totalPrice, "this is totalPrice!");
+
+    try {
+      await axios.post("/api/reservations", {
+        startDate: dateRange.startDate,
+        endDate: dateRange.endDate,
+        listingId: listing?.id,
+        totalPrice,
+      });
+
+      toast.success("Listing reserved!");
+      setDateRange(initialDateRage);
+
+      // todo => redirect trips!
+
+      router.refresh();
+    } catch (err) {
+      toast.error("Something went wrong!");
+    }
+    setIsLoading(false);
+  }, [currentUser, totalPrice, dateRange, loginModal, router, listing.id]);
 
   return (
     <Container>
