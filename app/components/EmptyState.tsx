@@ -7,7 +7,7 @@ import Button from "./button";
 interface EmptyState {
   title?: string;
   subtitle?: string;
-  showReset: boolean;
+  showReset?: boolean;
   buttonLabel?: string;
 }
 
