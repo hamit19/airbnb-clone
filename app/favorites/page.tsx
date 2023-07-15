@@ -21,7 +21,11 @@ const FavoritesPage = async () => {
     return <EmptyState title='Unauthorized!' subtitle='Please login' />;
   }
 
-  return <FavoriteClient listings={listings} currentUser={currentUser} />;
+  return (
+    <div className='py-4'>
+      <FavoriteClient listings={listings} currentUser={currentUser} />
+    </div>
+  );
 };
 
 export default FavoritesPage;

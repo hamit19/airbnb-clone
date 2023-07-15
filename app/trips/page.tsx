@@ -25,7 +25,11 @@ const TripsPage = async () => {
       />
     );
 
-  return <TripsClient reservations={reservations} currentUser={currentUser} />;
+  return (
+    <div className='py-4'>
+      <TripsClient reservations={reservations} currentUser={currentUser} />
+    </div>
+  );
 };
 
 export default TripsPage;

@@ -21,12 +21,12 @@ const ReservationPage = async () => {
     );
 
   return (
-    <Container>
+    <div className='py-4'>
       <ReservationsClient
         reservations={reservations}
         currentUser={currentUser}
       />
-    </Container>
+    </div>
   );
 };
 

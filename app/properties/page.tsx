@@ -20,7 +20,11 @@ const PropertiesPage = async () => {
       />
     );
 
-  return <PropertiesClient listings={properties} currentUser={currentUser} />;
+  return (
+    <div className='py-4'>
+      <PropertiesClient listings={properties} currentUser={currentUser} />
+    </div>
+  );
 };
 
 export default PropertiesPage;

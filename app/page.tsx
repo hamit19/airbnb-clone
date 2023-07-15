@@ -6,8 +6,6 @@ import Container from "./components/container";
 import ListingCard from "./components/listings/ListingCard";
 import getCurrentUser from "./actions/getCurrentUser";
 
-const isEmpty = false;
-
 interface HomeProps {
   searchParams: IListingParams;
 }
@@ -16,7 +14,7 @@ const Home = async ({ searchParams }: HomeProps) => {
   const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
 
-  if (isEmpty) {
+  if (listings.length === 0) {
     return <EmptyState buttonLabel={"Remove all filters"} showReset={true} />;
   }
 

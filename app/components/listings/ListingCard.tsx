@@ -1,7 +1,6 @@
 "use client";
 
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
-import { Listing, Reservation } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
 import { format } from "date-fns";
