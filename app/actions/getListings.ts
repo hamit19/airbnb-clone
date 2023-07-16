@@ -30,10 +30,6 @@ async function getListings(params: IListingParams) {
       query.userId = userId;
     }
 
-    if (category) {
-      query.category = category;
-    }
-
     if (roomCount) {
       query.roomCount = {
         gte: +roomCount,
@@ -50,6 +46,10 @@ async function getListings(params: IListingParams) {
       query.guestCount = {
         gte: +guestCount,
       };
+    }
+
+    if (category) {
+      query.category = category;
     }
 
     if (locationValue) {
@@ -82,10 +82,12 @@ async function getListings(params: IListingParams) {
       },
     });
 
-    return listings.map((listing) => ({
+    const safeListing = listings.map((listing) => ({
       ...listing,
       createdAt: listing.createdAt.toISOString(),
     }));
+
+    return safeListing;
   } catch (err: any) {
     throw new Error(err);
   }
