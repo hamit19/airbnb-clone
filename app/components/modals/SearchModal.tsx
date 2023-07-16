@@ -24,7 +24,7 @@ const SearchModal = () => {
   const params = useSearchParams();
   const router = useRouter();
 
-  const [location, setLocation] = useState<CountrySelectValue>();
+  const [locationValue, setLocationValue] = useState<CountrySelectValue>();
   const [step, setStep] = useState(STEPS.LOCATION);
   const [guestCount, setGuestCount] = useState(1);
   const [roomCount, setRoomCount] = useState(1);
@@ -37,7 +37,7 @@ const SearchModal = () => {
 
   const Map = useMemo(
     () => dynamic(() => import("../Map"), { ssr: false }),
-    [location]
+    [locationValue]
   );
 
   const onBack = useCallback(() => {
@@ -59,7 +59,7 @@ const SearchModal = () => {
 
     const updatedQuery: any = {
       ...currentQuery,
-      location: location?.value,
+      locationValue: locationValue?.value,
       guestCount,
       roomCount,
       bathroomCount,
@@ -88,7 +88,7 @@ const SearchModal = () => {
     guestCount,
     bathroomCount,
     roomCount,
-    location?.value,
+    locationValue?.value,
     router,
     dateRange,
     onNext,
@@ -116,14 +116,14 @@ const SearchModal = () => {
         subtitle='Find the perfect location'
       />
       <CountrySelect
-        value={location}
+        value={locationValue}
         onChange={(value) => {
-          setLocation(value as CountrySelectValue);
+          setLocationValue(value as CountrySelectValue);
         }}
       />
       <hr />
       <div className='h-[30vh]'>
-        <Map center={location?.latlng} />
+        <Map center={locationValue?.latlng} />
       </div>
     </div>
   );
