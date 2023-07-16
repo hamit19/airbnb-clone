@@ -1,5 +1,5 @@
+export const dynamic = "force-dynamic";
 import getListings, { IListingParams } from "./actions/getListings";
-import testingImage from "../public/images/modernFranceHouse.jpg";
 
 import EmptyState from "./components/EmptyState";
 import Container from "./components/container";
