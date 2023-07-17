@@ -1,6 +1,4 @@
 import getListings, { IListingParams } from "./actions/getListings";
-import testingImage from "../public/images/modernFranceHouse.jpg";
-
 import EmptyState from "./components/EmptyState";
 import Container from "./components/container";
 import ListingCard from "./components/listings/ListingCard";
