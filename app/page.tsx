@@ -1,9 +1,5 @@
 export const dynamic = "force-dynamic";
 import getListings, { IListingParams } from "./actions/getListings";
-<<<<<<< HEAD
-
-=======
->>>>>>> hot-fix
 import EmptyState from "./components/EmptyState";
 import Container from "./components/container";
 import ListingCard from "./components/listings/ListingCard";
