@@ -90,7 +90,7 @@ const Modal: React.FC<ModalProps> = ({
               {/* BODY */}
               <div className='relative flex-auto p-6 '>{body}</div>
               {/* FOOTER  */}
-              <div className='flex flex-col gap-4 p-6'>
+              <div className='flex flex-col gap-4 p-6 bg-white'>
                 <div className='flex flex-row items-center w-full gap-4'>
                   {secondaryAction && secondaryActionLabel && (
                     <Button
