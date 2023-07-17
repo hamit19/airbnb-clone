@@ -121,7 +121,7 @@ const ListingClient: React.FC<ListingClientParams> = ({
             locationValue={listing.locationValue}
           />
 
-          <div className='mb-10 first-order md:col-span-3 md:order-last'>
+          <div className='mt-10 first-order md:col-span-3 md:order-last'>
             <ListingReservation
               price={listing.price}
               totalPrice={totalPrice}

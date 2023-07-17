@@ -9,28 +9,32 @@ import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
 import useRentModal from "@/app/hooks/useRetnModal";
 import { useRouter } from "next/navigation";
+import useUserMenu from "@/app/hooks/useUserMenu";
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
 }
 
 const UserMenu: React.FC<NavbarProps> = ({ currentUser }) => {
-  const [isOpen, setIsOpen] = useState(false);
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const rentModal = useRentModal();
   const router = useRouter();
 
-  const toggleMenu = useCallback(() => {
-    setIsOpen((value) => !value);
-  }, []);
+  const { isOpen, onOpen, onClose } = useUserMenu();
+
+  const handleClick = useCallback(() => {
+    setTimeout(() => {
+      onClose();
+    }, 3000);
+  }, [onClose]);
 
   const onRent = useCallback(() => {
-    // if (!currentUser) return loginModal.onOpen();
+    if (!currentUser) return loginModal.onOpen();
 
     //open rent modal
     rentModal.onOpen();
-  }, [rentModal]);
+  }, [rentModal, currentUser, loginModal]);
 
   return (
     <div className='relative select-none'>
@@ -42,7 +46,10 @@ const UserMenu: React.FC<NavbarProps> = ({ currentUser }) => {
           <span>Airbnb is your home</span>
         </div>
         <div
-          onClick={toggleMenu}
+          onClick={(e) => {
+            e.stopPropagation();
+            isOpen ? onClose() : onOpen();
+          }}
           className='flex items-center justify-center gap-3 p-3 transition border rounded-full cursor-pointer md:px-2 md:py-1 border-neutral-200 hover:shadow-md '
         >
           <AiOutlineMenu />
@@ -68,9 +75,10 @@ const UserMenu: React.FC<NavbarProps> = ({ currentUser }) => {
           
         '
         >
-          <div className='flex flex-col gap-1'>
+          <div className='flex flex-col gap-1' onClick={handleClick}>
             {currentUser ? (
               <>
+                <MenuItem onClick={() => router.push("/")} label='Home' />
                 <MenuItem
                   onClick={() => router.push("/trips")}
                   label='My trips'
